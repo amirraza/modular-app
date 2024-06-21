@@ -2,7 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
 }
-
+kotlin {
+    jvmToolchain(17)
+}
 android {
     namespace = "com.example.modularapplication"
     compileSdk = 34
@@ -29,13 +31,6 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
         compose = true
     }
@@ -50,6 +45,10 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.modular.main.sdk)
+    implementation(libs.modular.upload)
+    implementation(libs.modular.download)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
